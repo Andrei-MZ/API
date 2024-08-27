@@ -1,9 +1,19 @@
 import express from 'express'
 
 const app = express()
+app.use(express.json())
 
-app.get('/user', (req, res) =>{
-    res.send('ok, tudo certo')
+const users = []
+
+app.post('/users', (req, res) =>{
+
+    users.push(req.body)
+
+    res.status(201).json(req.body)
+})
+
+app.get('/users', (req, res) =>{
+    res.status(200).json(users)
 })
 
 app.listen(3000)
@@ -19,4 +29,13 @@ app.listen(3000)
  * app.put('/user') vai editar varios usuarios
  * app.put('/user') vai editar um usuario
  * app.delete('/user') vai deletar o usuario
+ */
+
+/**
+ * Objetivos:
+ * Criar uma API de usuários:
+ * Criar um usuario
+ * Listar um usuario
+ * Editar um usuario
+ * Deletar um usuario
  */
