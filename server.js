@@ -38,4 +38,7 @@ app.listen(3000)
  * Listar um usuario
  * Editar um usuario
  * Deletar um usuario
+ * 
+ * user: andreimendes
+ * senha: pCTXofyBjGnDcfSt
  */
