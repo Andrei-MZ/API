@@ -1,17 +1,23 @@
 import express from 'express'
 
+
 const app = express()
 app.use(express.json())
 
 const users = []
 
-app.post('/users', (req, res) =>{
 
-    users.push(req.body)
+// ROTA PARA CRIAR
+app.post('/users',  (req, res) =>{
+
+    
+
+    
 
     res.status(201).json(req.body)
 })
 
+// ROTA PARA BUSCAR
 app.get('/users', (req, res) =>{
     res.status(200).json(users)
 })
@@ -39,6 +45,6 @@ app.listen(3000)
  * Editar um usuario
  * Deletar um usuario
  * 
- * user: andreimendes
- * senha: pCTXofyBjGnDcfSt
+ * user: andrei
+ * senha: crKbbVVZDl5rkubV
  */
