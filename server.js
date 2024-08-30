@@ -23,11 +23,23 @@ app.post('/users', async  (req, res) =>{
 })
 
 // ROTA PARA BUSCAR
-app.get('/users', async (req, res) =>{
+app.get('/users', async (req, res) => {
+    let users = []
+
+    if (req.query.name) {
+        users = await prisma.user.findMany({
+            where: {
+                name: req.query.name,
+                email: req.query.email,
+                age: req.query.age
+            }
+        })
+    } else {
+        users = await prisma.user.findMany()
+    }
+
     res.status(200).json(users)
 })
-
-const users = await prisma.user.findMany()
 
 // ROTA DE EDITAR 1 USUARIO
 app.put('/users/:id', async  (req, res) =>{
@@ -47,6 +59,7 @@ app.put('/users/:id', async  (req, res) =>{
      res.status(201).json(req.body)
  })
 
+ // ROTA DE DELETAR
  app.delete('/users/:id', async (req, res) =>{
     await prisma.user.delete({
         where: {
